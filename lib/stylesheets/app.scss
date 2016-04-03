@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body, input {
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+div#app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #26383F;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.swatch {
+  color: #FFF;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #FFF;
+}
+
+form input[type="text"] {
+  border: 0;
+  font-size: 24px;
+  width: 195px;
+  outline: 0;
+}
+
+span.faux-field {
+  background-color: #FFF;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  width: 230px;
+  padding: 0 10px;
+  font-size: 24px;
+  font-weight: 200;
+  color: #CCC;
+}
+
+section.selected-colors {
+  box-shadow: 0 0 100px rgba(0,0,0,0.5);
+  margin: 20px;
+  width: 250px;
+  position: fixed;
+
+  ul {
+    margin-left: 0;
+    list-style: none;
+
+    li {
+      padding: 10px;
+      position: relative;
+      cursor: pointer;
+      animation: rotate-in 500ms 1;
+
+      span.color-value {
+        cursor: default;
+      }
+    }
+  }
+}
+
+section.preview {
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  ul {
+    flex: 1;
+    list-style: none;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      min-height: 60px;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: right;
+      transition: background-color 250ms ease-in;
+      padding-right: 20px;
+      color: rgba(255, 255, 255, 0.75);
+      box-shadow: 5px 0 50px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+
+      span.color-value {
+        cursor: default;
+      }
+
+      &:hover,
+      &.current-color {
+        color: rgba(255, 255, 255, 1);
+      }
+
+      &.current-color {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
