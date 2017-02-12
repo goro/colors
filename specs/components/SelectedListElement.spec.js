@@ -3,7 +3,8 @@ import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
-import SelectedListElement from '../../lib/javascripts/components/selected-list-element'
+import { describe, beforeEach, it } from 'mocha'
+import SelectedListElement from '../../lib/javascripts/components/SelectedListElement.jsx'
 
 describe('SelectedListElement', () => {
   let renderer
@@ -13,7 +14,7 @@ describe('SelectedListElement', () => {
     renderer = TestUtils.createRenderer()
     removeColor = function () {}
     renderer.render(
-      <SelectedListElement value='9B6800' key='123' removeColor={removeColor}></SelectedListElement>
+      <SelectedListElement value='9B6800' key='123' removeColor={removeColor} />
     )
   })
 
@@ -30,5 +31,4 @@ describe('SelectedListElement', () => {
 
     expect(actual).toIncludeJSX(expected)
   })
-
 })

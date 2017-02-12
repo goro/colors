@@ -4,7 +4,7 @@
   "description": "Palette building tool",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './specs/**/*.spec.js' --compilers js:babel-core/register",
+    "test": "standard && mocha './specs/**/*.spec.js' --compilers js:babel-core/register",
     "test:watch": "npm test -- --watch",
     "serve": "webpack-dev-server --progress --colors --content-base public/",
     "dev": "parallelshell 'npm run test:watch' 'npm run serve'",
@@ -26,6 +26,7 @@
     "react-addons-test-utils": "^0.14.8",
     "redux-devtools": "^3.2.0",
     "sass-loader": "^3.2.0",
+    "standard": "^8.6.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
   },

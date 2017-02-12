@@ -3,7 +3,8 @@ import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
-import PreviewListElement from '../../lib/javascripts/components/preview-list-element'
+import { describe, beforeEach, it } from 'mocha'
+import PreviewListElement from '../../lib/javascripts/components/PreviewListElement.jsx'
 
 describe('PreviewListElement', () => {
   let addColor
@@ -16,7 +17,7 @@ describe('PreviewListElement', () => {
 
   it('has current class name if current', () => {
     renderer.render(
-      <PreviewListElement currentColor="336699" value="336699" addColor={addColor} ></PreviewListElement>
+      <PreviewListElement currentColor='336699' value='336699' addColor={addColor} />
     )
 
     let actual = renderer.getRenderOutput().props.className
@@ -27,7 +28,7 @@ describe('PreviewListElement', () => {
 
   it('has current default class name', () => {
     renderer.render(
-      <PreviewListElement currentColor="FF33CC" value="336699" addColor={addColor} ></PreviewListElement>
+      <PreviewListElement currentColor='FF33CC' value='336699' addColor={addColor} />
     )
 
     let actual = renderer.getRenderOutput().props.className
@@ -38,7 +39,7 @@ describe('PreviewListElement', () => {
 
   it('has correct style background', () => {
     renderer.render(
-      <PreviewListElement currentColor="FF33CC" value="336699" addColor={addColor} ></PreviewListElement>
+      <PreviewListElement currentColor='FF33CC' value='336699' addColor={addColor} />
     )
 
     let actual = renderer.getRenderOutput().props.style
@@ -49,7 +50,7 @@ describe('PreviewListElement', () => {
 
   it('has correct value', () => {
     renderer.render(
-      <PreviewListElement currentColor="FF33CC" value="336699" addColor={addColor} ></PreviewListElement>
+      <PreviewListElement currentColor='FF33CC' value='336699' addColor={addColor} />
     )
 
     let actual = renderer.getRenderOutput()
@@ -57,5 +58,4 @@ describe('PreviewListElement', () => {
 
     expect(actual).toIncludeJSX(expected)
   })
-
 })

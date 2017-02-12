@@ -1,12 +1,12 @@
-import ColorReducer from '../../lib/javascripts/reducers/color'
 import expect from 'expect'
+import { describe, it } from 'mocha'
+import ColorReducer from '../../lib/javascripts/reducers/ColorReducer'
 
 describe('ColorReducer', () => {
-
   describe('default state', () => {
     it('is correct', () => {
-      let actual = ColorReducer(undefined, {})
-      let expected = {
+      const actual = ColorReducer(undefined, {})
+      const expected = {
         currentColor: 'CC0033',
         selectedColors: []
       }
@@ -17,8 +17,8 @@ describe('ColorReducer', () => {
 
   describe('SET_CURRENT_COLOR', () => {
     it('sets the current color as currentColor', () => {
-      let actual = ColorReducer(undefined, { type: 'SET_CURRENT_COLOR', color: 'FFCC00' })
-      let expected = {
+      const actual = ColorReducer(undefined, { type: 'SET_CURRENT_COLOR', color: 'FFCC00' })
+      const expected = {
         currentColor: 'FFCC00',
         selectedColors: []
       }
@@ -27,18 +27,24 @@ describe('ColorReducer', () => {
     })
 
     it('does not set current color as currentColor if new color is invalid', () => {
-      let actual = ColorReducer(undefined, { type: 'SET_CURRENT_COLOR', color: 'Foobar' })
-      let expected = {
+      const state = {
         currentColor: 'FFCC00',
         selectedColors: []
       }
+      const actual = ColorReducer(state, { type: 'SET_CURRENT_COLOR', color: 'Foobar' })
+      const expected = {
+        currentColor: 'FFCC00',
+        selectedColors: []
+      }
+
+      expect(actual).toEqual(expected)
     })
   })
 
   describe('ADD_COLOR', () => {
     it('adds new color to selectedColors', () => {
-      let actual = ColorReducer(undefined, { type: 'ADD_COLOR', color: 'CC0033' })
-      let expected = {
+      const actual = ColorReducer(undefined, { type: 'ADD_COLOR', color: 'CC0033' })
+      const expected = {
         currentColor: 'CC0033',
         selectedColors: [ 'CC0033' ]
       }
@@ -47,9 +53,9 @@ describe('ColorReducer', () => {
     })
 
     it('does not add color if already presenter', () => {
-      let state = { currentColor: 'CC0033', selectedColors: [ 'CC0033' ] }
-      let actual = ColorReducer(state, { type: 'ADD_COLOR', color: 'CC0033' })
-      let expected = {
+      const state = { currentColor: 'CC0033', selectedColors: [ 'CC0033' ] }
+      const actual = ColorReducer(state, { type: 'ADD_COLOR', color: 'CC0033' })
+      const expected = {
         currentColor: 'CC0033',
         selectedColors: [ 'CC0033' ]
       }
@@ -58,9 +64,9 @@ describe('ColorReducer', () => {
     })
 
     it('does not add color if invalid', () => {
-      let state = { currentColor: 'CC0033', selectedColors: [ 'CC0033' ] }
-      let actual = ColorReducer(state, { type: 'ADD_COLOR', color: 'hackzor' })
-      let expected = {
+      const state = { currentColor: 'CC0033', selectedColors: [ 'CC0033' ] }
+      const actual = ColorReducer(state, { type: 'ADD_COLOR', color: 'hackzor' })
+      const expected = {
         currentColor: 'CC0033',
         selectedColors: [ 'CC0033' ]
       }
@@ -71,9 +77,9 @@ describe('ColorReducer', () => {
 
   describe('REMOVE_COLOR', () => {
     it('removes color from selectedColors', () => {
-      let state = { currentColor: 'FFCC00', selectedColors: [ 'FF3300', 'CC3399', 'CC9900' ]}
-      let actual = ColorReducer(state, { type: 'REMOVE_COLOR', color: 'CC3399' })
-      let expected = {
+      const state = { currentColor: 'FFCC00', selectedColors: [ 'FF3300', 'CC3399', 'CC9900' ] }
+      const actual = ColorReducer(state, { type: 'REMOVE_COLOR', color: 'CC3399' })
+      const expected = {
         currentColor: 'FFCC00',
         selectedColors: [ 'FF3300', 'CC9900' ]
       }
@@ -81,5 +87,4 @@ describe('ColorReducer', () => {
       expect(actual).toEqual(expected)
     })
   })
-
 })

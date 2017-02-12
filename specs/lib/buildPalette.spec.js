@@ -1,10 +1,10 @@
 import expect from 'expect'
-import buildPalette from '../../lib/javascripts/utilities/build-palette'
+import { describe, it } from 'mocha'
+import buildPalette from '../../lib/javascripts/utilities/buildPalette'
 
 describe('buildPalette', () => {
-
   it('should return an array of colors separated by 10% increments', () => {
-    let expected = [
+    const expected = [
       '9B6800',
       'AF7C00',
       'C39000',
@@ -17,13 +17,13 @@ describe('buildPalette', () => {
       'FFFF50',
       'FFFF64'
     ]
-    let actual = buildPalette('FFCC00')
+    const actual = buildPalette('FFCC00')
 
     expect(actual).toEqual(expected)
   })
 
   it('should return an array of colors separated by 10% increments with lowercase', () => {
-    let expected = [
+    const expected = [
       '9B6800',
       'AF7C00',
       'C39000',
@@ -36,51 +36,50 @@ describe('buildPalette', () => {
       'FFFF50',
       'FFFF64'
     ]
-    let actual = buildPalette('ffcc00')
+    const actual = buildPalette('ffcc00')
 
     expect(actual).toEqual(expected)
   })
 
   it('should return color at 6th spot', () => {
-    let expected = 'FFCC00'
-    let actual = buildPalette('FFCC00')[5]
+    const expected = 'FFCC00'
+    const actual = buildPalette('FFCC00')[5]
 
     expect(actual).toEqual(expected)
   })
 
   it('should return 11 colors', () => {
-    let expected = 11
-    let actual = buildPalette('FFCC00').length
+    const expected = 11
+    const actual = buildPalette('FFCC00').length
 
     expect(actual).toEqual(expected)
   })
 
   it('should return 6 colors with if lightest possible', () => {
-    let expected = 6
-    let actual = buildPalette('FFFFFF').length
+    const expected = 6
+    const actual = buildPalette('FFFFFF').length
 
     expect(actual).toEqual(expected)
   })
 
   it('should return color at last spot if lightest possible', () => {
-    let expected = 'FFFFFF'
-    let actual = buildPalette('FFFFFF')[5]
+    const expected = 'FFFFFF'
+    const actual = buildPalette('FFFFFF')[5]
 
     expect(actual).toEqual(expected)
   })
 
   it('should return 6 colors with if darkest possible', () => {
-    let expected = 6
-    let actual = buildPalette('000000').length
+    const expected = 6
+    const actual = buildPalette('000000').length
 
     expect(actual).toEqual(expected)
   })
 
   it('should return color at first spot if darkest possible', () => {
-    let expected = '000000'
-    let actual = buildPalette('000000')[0]
+    const expected = '000000'
+    const actual = buildPalette('000000')[0]
 
     expect(actual).toEqual(expected)
   })
-
 })

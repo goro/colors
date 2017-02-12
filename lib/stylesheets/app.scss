@@ -26,7 +26,7 @@ main {
   flex-direction: row;
 }
 
-.swatch {
+.Swatch {
   color: #FFF;
 }
 
@@ -36,30 +36,34 @@ label {
   color: #FFF;
 }
 
-form input[type="text"] {
-  border: 0;
-  font-size: 24px;
-  width: 195px;
-  outline: 0;
+span.Swatch-colorValue {
+  cursor: default;
 }
 
-span.faux-field {
-  background-color: #FFF;
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  width: 230px;
-  padding: 0 10px;
-  font-size: 24px;
-  font-weight: 200;
-  color: #CCC;
-}
-
-section.selected-colors {
+section.SelectedColors {
   box-shadow: 0 0 100px rgba(0,0,0,0.5);
   margin: 20px;
   width: 250px;
   position: fixed;
+
+  form input[type="text"] {
+    border: 0;
+    font-size: 24px;
+    width: 195px;
+    outline: 0;
+  }
+
+  span.SelectedColors-fauxField {
+    background-color: #FFF;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    width: 230px;
+    padding: 0 10px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #CCC;
+  }
 
   ul {
     margin-left: 0;
@@ -70,15 +74,11 @@ section.selected-colors {
       position: relative;
       cursor: pointer;
       animation: rotate-in 500ms 1;
-
-      span.color-value {
-        cursor: default;
-      }
     }
   }
 }
 
-section.preview {
+section.Preview {
   flex: 1;
   min-height: 100%;
   display: flex;
@@ -105,16 +105,12 @@ section.preview {
       box-shadow: 5px 0 50px rgba(0, 0, 0, 0.15);
       cursor: pointer;
 
-      span.color-value {
-        cursor: default;
-      }
-
       &:hover,
-      &.current-color {
+      &.Preview-currentColor {
         color: rgba(255, 255, 255, 1);
       }
 
-      &.current-color {
+      &.Preview-currentColor {
         font-weight: 700;
       }
     }

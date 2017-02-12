@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+require('webpack')
 var path = require('path')
 
 module.exports = {
@@ -13,16 +13,16 @@ module.exports = {
   module: {
     loaders: [
       {
-        text: /\.js[x]?$/,
+        test: /\.js[x]?$/,
         exclude: /(node_modules)/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           presets: [ 'es2015' ]
         }
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style', 'css', 'sass' ]
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
     ]
   }
